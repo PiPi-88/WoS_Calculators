@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="canonical" href="https://pipi-88.github.io/WoS_Calculators/docs/index.html">
+        <title>ぴぴの計算機集</title>
+        <meta name="description" content="ぴーぴぴが作成した、ホワサバ用の各種計算機ページへのリンクをまとめています。">
+    </head>
+    <body>
+        <h1>計算機のリンク一覧</h1>
+        <p>
+            以下のリンクから各種計算機のページへ移動できます。
+            予告せずにパスを変更する可能性がありますので、ブックマークする際はこのページをブックマークしてください。
+        </p>
+        <nav>
+            <ul>
+                <li><a href="sample/Test.html">テストページ</a></li>
+                <li><a href="train/page.html">訓練関連の計算機</a></li>
+                <!-- ここに新しい計算機のリンクを追加していく -->
+            </ul>
+        </nav>
+        <hr>
+        <div>
+            <p>
+                localStorageに入力データを保存しています。
+                詳しくは <a href="DataStorage.md">こちら</a> をご覧ください。
+                また、こちらでlocalStorageの中身を確認することができます。
+            </p>
+            <button onClick="checkAllData()">中身の確認</button>
+            <hr>
+            <p id="dataCheckResult"></p>
+            <hr>
+        </div>
+    </body>
+    <script>
+        const out = document.getElementById("dataCheckResult");
+
+        function checkAllData() {
+            if(typeof(Storage) === "undefined") {
+                out.innerText = "このブラウザはlocalStorageに対応していません。";
+                return;
+            }
+            out.innerText = "";
+            for(let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                const value = localStorage.getItem(key);
+                out.innerText += `${key} : ${value}\n`;
+            }
+        }
+    </script>
+</html>

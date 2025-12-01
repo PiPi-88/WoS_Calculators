@@ -1,7 +1,7 @@
-const input = document.getElementById("url");
+const input = document.getElementById("in");
 const output = document.getElementById("urls");
 
-function addURL() {
+function addText() {
     const item = document.createElement("LI");
     item.innerText = input.value;
     output.appendChild(item);

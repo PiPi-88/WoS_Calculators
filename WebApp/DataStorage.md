@@ -1,1 +1,0 @@
-# DataStorageのキーと値のマップ

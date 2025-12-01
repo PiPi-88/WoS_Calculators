@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+  <head>
+    <meta version="1.0">
+    <meta charset="utf-8">
+    <title>訓練関連の計算機</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ホワサバの訓練・昇格に関する各種計算を行う計算機ページです。">
+    <script src="data.js" defer></script>
+    <script src="script.js" defer></script>
+  </head>
+
+  <style>
+    body {
+        letter-spacing: 0.1em;
+        font-family: "Arial";
+    }
+    div {
+        margin: 0.5em;
+    }
+    a {
+        letter-spacing: 0.05em;
+    }
+    .left { float: left; }
+    .train { border: solid 3px #EEE; }
+    .promote { border: solid 3px #EEE; }
+  </style>
+
+  <body>
+    <div>
+      <label for="event">ポイント換算方式：</label>
+      <select id="event">
+        <option value="koi">氷原支配者</option>
+        <option value="season">季節イベント</option>
+      </select><br>
+      <label for="cap">訓練容量：</label>
+      <input type="number" id="cap" min=0 />
+      <br>
+      <label for="buff">訓練速度(%)：</label>
+      <input type="number" id="buff" min=0 />
+      <br>
+      <button onClick="calculate();">実行！</button>
+    </div>
+    <div class="left train">
+      > 訓練
+      <div>
+        <div>
+          <label for="levelTrain">兵舎レベル：</label>
+          <select id="levelTrain">
+            <option value="0">1から30</option>
+            <option value="1">火晶 1</option><option value="2">火晶 2</option><option value="3">火晶 3</option>
+            <option value="4">火晶 4</option><option value="5">火晶 5</option>
+            <option value="6">火晶 6</option><option value="7">火晶 7</option><option value="8">火晶 8</option>
+            <option value="9">火晶 9</option><option value="10">火晶 10</option>
+          </select>
+          <br>
+          <label for="trainTier">Tier：</label>
+          <input type="number" id="trainTier" min=1 max=11 />
+          <br>
+          <label for="trainNum">訓練人数：</label>
+          <input type="number" id="trainNum" min=0 />
+        </div>
+        <div>
+          <label>訓練容量：<a id="trainCap">0</a>人</label>
+          <br>
+          <label>訓練回数：<a id="trainTap">0</a>回</label>
+          <br>
+          <label>訓練時間：<a id="trainTime">0</a></label>
+          <br>
+          <label>上昇総力：<a id="trainPowerup">0</a></label>
+        </div>
+        <div>
+          <label>訓練ポイント：<a id="trainPoint">0</a></label>
+          <br>
+          <label>加速ポイント：<a id="trainSpeedup">0</a></label>
+          <br>
+          <label>総力ポイント：<a id="trainPower">0</a></label>
+        </div>
+      </div>
+      <hr>
+      <div>
+        <label for="trainSoldier">兵種：</label>
+        <select id="trainSoldier" onChange="calcResources('train');">
+          <option value="0">盾兵</option>
+          <option value="1">槍兵</option>
+          <option value="2">弓兵</option>
+        </select>
+        <div>
+          <label for="trainMeat">生肉：<a id="trainMeat">0</a></label>
+          <br>
+          <label for="trainWood">木材：<a id="trainWood">0</a></label>
+          <br>
+          <label for="trainCoal">石炭：<a id="trainCoal">0</a></label>
+          <br>
+          <label for="trainIron">鉄鉱：<a id="trainIron">0</a></label>
+        </div>
+      </div>
+    </div>
+    <div class="left promote">
+      > 昇格
+      <div>
+        <div>
+          <label for="levelPromote">兵舎レベル：</label>
+          <select id="levelPromote">
+            <option value="0">1から30</option>
+            <option value="1">火晶 1</option><option value="2">火晶 2</option><option value="3">火晶 3</option>
+            <option value="4">火晶 4</option><option value="5">火晶 5</option>
+            <option value="6">火晶 6</option><option value="7">火晶 7</option><option value="8">火晶 8</option>
+            <option value="9">火晶 9</option><option value="10">火晶 10</option>
+          </select>
+          <br>
+          <label for="tierFrom">Tier：</label>
+          <input type="number" id="tierFrom" min=1 max=11 />
+          <label for="tierTo">から Tier：</label>
+          <input type="number" id="tierTo" min=1 max=11 />
+          <br>
+          <label for="promoteNum">昇格人数：</label>
+          <input type="number" id="promoteNum" min=0 />
+        </div>
+        <div>
+          <label for="promoteCap">昇格容量：<a id="promoteCap">0</a>人</label>
+          <br>
+          <label for="promoteTap">昇格回数：<a id="promoteTap">0</a>回</label>
+          <br>
+          <label for="promoteTime">昇格時間：<a id="promoteTime">0</a></label>
+          <br>
+          <label for="promotePowerup">上昇総力：<a id="promotePowerup">0</a></label>
+        </div>
+        <div>
+          <label for="promotePoint">昇格ポイント：<a id="promotePoint">0</a></label>
+          <br>
+          <label for="promoteSpeedup">加速ポイント：<a id="promoteSpeedup">0</a></label>
+          <br>
+          <label for="promotePower">総力ポイント：<a id="promotePower">0</a></label>
+        </div>
+      </div>
+      <hr>
+      <div>
+        <label for="promoteSoldier">兵種：</label>
+        <select id="promoteSoldier" onChange="calcResources('promote');">
+          <option value="0">盾兵</option>
+          <option value="1">槍兵</option>
+          <option value="2">弓兵</option>
+        </select>
+        <div>
+          <label for="promoteMeat">生肉：<a id="promoteMeat">0</a></label>
+          <br>
+          <label for="promoteWood">木材：<a id="promoteWood">0</a></label>
+          <br>
+          <label for="promoteCoal">石炭：<a id="promoteCoal">0</a></label>
+          <br>
+          <label for="promoteIron">鉄鉱：<a id="promoteIron">0</a></label>
+        </div>
+      </div>
+    </div>
+  </body>
+
+</html>
