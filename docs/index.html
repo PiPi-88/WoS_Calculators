@@ -7,10 +7,48 @@
         <title>ぴぴの計算機集</title>
         <meta name="description" content="ぴーぴぴが作成した、ホワサバ用の各種計算機ページへのリンクをまとめています。">
     </head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #333;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        nav li {
+            margin: 5px 0;
+        }
+        nav a {
+            text-decoration: none;
+            color: #0066cc;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #dataCheckResult {
+            white-space: pre-wrap;
+            background-color: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-top: 10px;
+        }
+    </style>
     <body>
         <h1>計算機のリンク一覧</h1>
+        <h2>※現在移植作業中です。</h2>
+        <a>MinecraftのMOD作成と並行しているので、しばらくかかるかもしれません。</a>
         <p>
-            以下のリンクから各種計算機のページへ移動できます。
+            以下のリンクから各種計算機のページへ移動できます。<br>
             予告せずにパスを変更する可能性がありますので、ブックマークする際はこのページをブックマークしてください。
         </p>
         <nav>
@@ -24,7 +62,7 @@
         <div>
             <p>
                 localStorageに入力データを保存しています。
-                詳しくは <a href="DataStorage.md">こちら</a> をご覧ください。
+                詳しくは <a href="DataStorage.md">こちら</a> をご覧ください。<br>
                 また、こちらでlocalStorageの中身を確認することができます。
             </p>
             <button onClick="checkAllData()">中身の確認</button>
