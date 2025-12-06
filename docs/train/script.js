@@ -172,4 +172,41 @@ function saveInputs(e) {
 }
 
 window.addEventListener("DOMContentLoaded", loadInputs);
-window.addEventListener("beforeunload", saveInputs);
+
+// ----AI Generated----
+
+// beforeunload が全ての環境で発火するとは限らないため、
+// ヒューリスティックに判定してから適切なイベントを登録する。
+function isBeforeUnloadReliable() {
+    const ua = navigator.userAgent || "";
+    const isIOS = /iP(hone|od|ad)/.test(ua);
+    const isAndroid = /Android/.test(ua);
+    const isMobile = /Mobi|Android|iP(hone|od)/.test(ua);
+    // WebView を示すトークンの簡易検出
+    const isWebView = /; wv\)|Android.*WebView|Version\/.*Safari/.test(ua) && !/Chrome\//.test(ua);
+
+    // iOS の Safari / WebView は beforeunload が信頼できないことが多い
+    if (isIOS) return false;
+    // Android の WebView も beforeunload を呼ばない/不安定な場合がある
+    if (isAndroid && isWebView) return false;
+    // モバイル全般はブラウザやOSの挙動差が大きいため、デスクトップ以外は保守的に false とする
+    if (isMobile) return false;
+
+    // それ以外（主にデスクトップ）は beforeunload を使う想定で true を返す
+    return true;
+}
+
+function registerUnloadSave() {
+    if (isBeforeUnloadReliable()) {
+        window.addEventListener("beforeunload", saveInputs);
+    } else {
+        // beforeunload が期待どおり発火しない端末向けのフォールバック
+        // `pagehide` はモバイルや PWA で使えることが多く、visibilitychange の hidden も補助として利用する
+        window.addEventListener("pagehide", saveInputs);
+        document.addEventListener("visibilitychange", function () {
+            if (document.visibilityState === "hidden") saveInputs();
+        });
+    }
+}
+
+registerUnloadSave();
