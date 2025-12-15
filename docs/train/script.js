@@ -3,6 +3,7 @@
 const point = document.getElementById("event"); // イベントタイプ (input)
 const cap = document.getElementById("cap"); // 訓練容量 (input)
 const buff = document.getElementById("buff"); // 訓練速度(%) (input)
+const capBuff = document.getElementById("capBuff"); // 訓練容量200%上昇 (input)
 // 訓練関係
 const tLevel = document.getElementById("levelTrain"); // 兵舎レベル (input)
 const tTier = document.getElementById("trainTier"); // 訓練ティア (input)
@@ -39,7 +40,9 @@ const pIron = document.getElementById("promoteIron");// 昇格に必要な鉄鉱
 
 // ユーティリティ
 function getCapability() {
-    return Number(cap.value ?? 0);
+    // +200%なので3倍
+    const amp = (capBuff.checked ?? false) ? 3 : 1;
+    return Number(cap.value ?? 0) * amp;
 }
 // It's so funny that
 // PromoteCapability = time(to)/{time(to)-time(from)}*trainCapability

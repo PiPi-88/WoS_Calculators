@@ -39,10 +39,13 @@
         <option value="season">季節イベント</option>
       </select><br>
       <label for="cap">訓練容量：</label>
-      <input type="number" id="cap" min=0 />
+      <input type="number" id="cap" min=0 value=0 />
       <br>
       <label for="buff">訓練速度(%)：</label>
-      <input type="number" id="buff" min=0 />
+      <input type="number" id="buff" min=0 value=0 />
+      <br>
+      <label for="capBuff">訓練容量上昇</label>
+      <input type="checkbox" id="capBuff" />
       <br>
       <button onClick="calculate();">実行！</button>
     </div>
@@ -60,10 +63,10 @@
           </select>
           <br>
           <label for="trainTier">Tier：</label>
-          <input type="number" id="trainTier" min=1 max=11 />
+          <input type="number" id="trainTier" min=1 max=11 value=1 />
           <br>
           <label for="trainNum">訓練人数：</label>
-          <input type="number" id="trainNum" min=0 />
+          <input type="number" id="trainNum" min=0 value=0 />
         </div>
         <hr>
         <div>
@@ -117,12 +120,12 @@
           </select>
           <br>
           <label for="tierFrom">Tier：</label>
-          <input type="number" id="tierFrom" min=1 max=11 />
+          <input type="number" id="tierFrom" min=1 max=11 value=1 />
           <label for="tierTo">から Tier：</label>
-          <input type="number" id="tierTo" min=1 max=11 />
+          <input type="number" id="tierTo" min=1 max=11 value=1 />
           <br>
           <label for="promoteNum">昇格人数：</label>
-          <input type="number" id="promoteNum" min=0 />
+          <input type="number" id="promoteNum" min=0 value=0 />
         </div>
         <hr>
         <div>
