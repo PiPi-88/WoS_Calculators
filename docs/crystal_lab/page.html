@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+  <head>
+    <meta version="1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>毎週の練成実験室</title>
+    <meta name="description" content="毎週の練成実験室にかかるコスト等">
+    <script src="script.js" defer></script>
+  </head>
+
+  <style>
+    body {
+        letter-spacing: 0.1em;
+        font-family: "Arial";
+    }
+    div {
+        margin: 0.5em;
+    }
+    fieldset {
+        display: inline-block;
+        min-width: 0;
+    }
+    .tip {
+        font-size: 0.5em;
+    }
+  </style>
+
+  <body>
+    <div>
+      <a href="../index.html">計算機一覧に戻る</a>
+    </div>
+    <hr>
+    <div>
+      精錬: 未実装 <span class="tip">多分やりません</span>
+    </div>
+    <hr>
+    <div>
+      <label for="seiren">スーパー精錬: </label>
+      <input type="number" id="seiren" placeholder="回数" min=0 max=100 />
+    </div>
+    <fieldset>
+        <legend>結果</legend>
+        必要火晶: <output id="cost">0</output>個 <span class="tip">-<span id="great"></span>回目に半額</span>
+        <div>
+          > 期待値 <span class="tip">-ほとんどこの値の近くだゾ</span>
+          <ul>
+            <li>精錬火晶: <output id="rew_1">0</output>個</li>
+            <li>精錬火晶1つに必要な火晶: <output id="rfcpfc_1">0</output>個</li>
+          </ul>
+        </div>
+        <hr>
+        <div>
+          > 理論値 <span class="tip">-おまいらには無理だゾ</span>
+          <ul>
+            <li>精錬火晶: <output id="rew_0">0</output>個</li>
+            <li>精錬火晶1つに必要な火晶: <output id="rfcpfc_0">0</output>個</li>
+          </ul>
+        </div>
+        <hr>
+        <div>
+          > 最悪値 <span class="tip">-運が悪いとあり得るゾ</span>
+          <ul>
+            <li>精錬火晶: <output id="rew_2">0</output>個</li>
+            <li>精錬火晶1つに必要な火晶: <output id="rfcpfc_2">0</output>個</li>
+          </ul>
+        </div>
+    </fieldset>
+  </body>
+</html>
