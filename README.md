@@ -4,3 +4,5 @@
 
 ## [計算機一覧](/docs/index.html)
 - [訓練関係](/docs/train/page.html)
+- [練成実験室](/docs/crystal_lab/page.html)
+- [部隊総力等](/docs/soldier_power/index.html)

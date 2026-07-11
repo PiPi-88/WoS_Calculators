@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta version="0.1">
+    <meta charset="utf-8">
+    <title>総力/争覇戦の戦力の計算機(WIP)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ホワサバの部隊総力や、争覇戦の戦力の計算機です。未完成です">
+    <link rel="stylesheet" href="../common.css" >
+    <link rel="stylesheet" href="style.css" >
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <nav>
+      <ol>
+        <li><a href="../index.html">リンク一覧</a></li>
+        <li>計算機</li>
+      <ol>
+    </nav>
+    <main>
+      <p id="tab_switch">
+        <a href="#content_1">総力/戦力計算</a>
+        <a href="#content_2">戦力最大化</a>
+      </p>
+      <div id="tab_body">
+        <!-- 戦力の計算機タブ -->
+        <div id="content_1" class="content">
+          <p>Coming soon...</p>
+        </div>
+        <!-- 戦力の最大化の計算機タブ -->
+        <div id="content_2" class="content">
+          <h3>注意：戦力を最大にしても、いいことはありません。自分に合った比率を使いましょう。</h3>
+          <h2>最大戦力: <a id=out_0>0</a> , 盾兵: <a id=out_1>0</a> 人, 槍兵: <a id="out_2">0</a> 人, 弓兵: <a id="out_3">0</a> 人</h2>
+          <h4>&gt; Tips: 小数点以下 2桁 まで入力で、より正確な近似が可能</h4>
+          <div>
+            <p>部隊容量: <input type="number" id="count" min=0 value=0 /></p>
+            <p>盾兵総力: <input type="number" id="power_0" min=0 value=0 /></p>
+            <p>槍兵総力: <input type="number" id="power_1" min=0 value=0 /></p>
+            <p>弓兵総力: <input type="number" id="power_2" min=0 value=0 /></p>
+          </div>
+          <div id="buffs"></div>
+          <div id="ant" style="clear: left;">
+            <button onClick="calculate();">計算</button>
+            <button onClick="save();">入力を保存</button>
+            <p>※ラグランジュ乗数法を用いて計算</p>
+            <p>※内部処理が不明のため、検証から導き出した近似式を用いています</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

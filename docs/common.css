@@ -1,0 +1,44 @@
+/* 全計算機共通のスタイルシート */
+
+* { padding: 0; margin: 0; box-sizing: border-box; }
+
+body {
+    margin: 1em;
+    background-color: #ddd;
+    font-family: "Arial";
+}
+
+nav {
+    border-bottom: 1px solid black;
+    padding-bottom: 0.3em;
+    margin-bottom: 0.7em;
+}
+
+nav ol {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.5em;
+
+    list-style-type: none
+}
+
+nav a {
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+nav a::after {
+    padding-left: 0.5em;
+    display: inline-block;
+
+    content: ">";
+    color: black;
+    font-size: 75%;
+    font-weight: bold;
+}

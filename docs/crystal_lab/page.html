@@ -7,13 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>毎週の練成実験室</title>
     <meta name="description" content="毎週の練成実験室にかかるコスト等">
+    <link rel="stylesheet" href="../common.css">
     <script src="script.js" defer></script>
   </head>
 
   <style>
     body {
         letter-spacing: 0.1em;
-        font-family: "Arial";
     }
     div {
         margin: 0.5em;
@@ -21,6 +21,10 @@
     fieldset {
         display: inline-block;
         min-width: 0;
+        padding: 0.5em 1em 0.5em 1em;
+    }
+    fieldset li {
+        margin-left: 2em;
     }
     .tip {
         font-size: 0.5em;
@@ -28,10 +32,12 @@
   </style>
 
   <body>
-    <div>
-      <a href="../index.html">計算機一覧に戻る</a>
-    </div>
-    <hr>
+    <nav>
+      <ol>
+        <li><a href="../index.html">計算機一覧</a></li>
+        <li>毎週の練成実験室</li>
+      </ol>
+    </nav>
     <div>
       精錬: 未実装 <span class="tip">多分やりません</span>
     </div>
