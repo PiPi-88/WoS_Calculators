@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
             contents.forEach(content => content.classList.remove("active"));
 
             button.classList.add('active');
-            console.log(target);
             document.getElementById(target).classList.add('active');
         });
     });

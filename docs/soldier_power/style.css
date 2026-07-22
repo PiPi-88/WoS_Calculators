@@ -1,8 +1,11 @@
+:root { --tab-color: #f8f8f8; }
+
 main { margin-top: 0; }
 
+/* タブの切り替えボタン */
 #tab_switch a {
-    position: relative;
     display: inline-block;
+    position: relative;
     padding: 0.75em 1em;
 
     border-width: 2px 2px 0px 2px;
@@ -14,23 +17,25 @@ main { margin-top: 0; }
     color: black;
     font-weight: bold;
 }
-
-/* タブの切り替えボタン */
 #tab_switch a:hover {
     background-color: rgba(255,255,255, 0.6);
 }
 #tab_switch a.active {
-    background-color: rgba(255,255,255, 0.8);
+    background-color: var(--tab-color);
+    z-index: 1;
 }
 
 /* タブのコンテンツ */
 #tab_body .content {
     display: none;
-    background-color: #f8f8f8;
+    position: relative;
+
+    background-color: var(--tab-color);
     border: 2px solid black;
+    border-radius: 0 4px 4px 4px;
+
     margin-top: -2px;
     padding: 1em;
-    position: relative;
     z-index: 0;
 }
 #tab_body .content.active {
@@ -41,6 +46,21 @@ main { margin-top: 0; }
     margin: 10px 0 10px 0;
     display: flex;
     flex-wrap: wrap;
-    flex-direction: row;
+    flex-direction: column;
     gap: 1em;
+}
+
+@media (min-width: 768px) {
+    #buffs {
+        flex-direction: row;
+    }
+}
+
+.ud-gap {
+    padding: 10px 0;
+}
+
+/* 其の他*/
+.kome {
+    font-size: 80%;
 }

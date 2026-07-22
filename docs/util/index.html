@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+ <textarea onChange="remove(this.value)" column=10 row=10></textarea>
+ <textarea id="out" readOnly></textarea>
+ <script src="script.js"></script>
+ <script>
+/**
+ * HTML文字列から不要な空白を削除する
+ * - タグ属性は絶対に変更しない（値も含めて完全保護）
+ * - 連続する空白は1つに圧縮
+ * - function / let / const / var などの後ろには必ず空白1つを残す
+ */
+function minifyHtmlSafe(html) {
+  if (typeof html !== "string") return html;
+
+  // --- 1. 属性値を一時退避（保護） ---
+  const attrStore = [];
+  const protectedHtml = html.replace(
+    /(\s+[a-zA-Z0-9:-]+)=(".*?"|'.*?')/g,
+    (match) => {
+      const key = `__ATTR_${attrStore.length}__`;
+      attrStore.push(match);
+      return key;
+    }
+  );
+
+  // --- 2. 属性以外の不要な空白を圧縮 ---
+  let result = protectedHtml;
+
+  // コメントアウトも削除
+  result = result.replace(/\/\/.+/g, "")
+
+  // 行頭・行末の空白削除
+  result = result.trim();
+
+  // 連続空白を1つに
+  result = result.replace(/\s+/g, " ");
+
+  // JSキーワード後の空白を保証
+  result = result.replace(
+    /\b(function|let|const|var|if|for|while|switch|catch)\s*/g,
+    "$1 "
+  );
+
+  // --- 3. 属性値を元に戻す ---
+  result = result.replace(/__ATTR_(\d+)__/g, (_, index) => attrStore[index]);
+
+  document.getElementById("out").value = result;
+}
+
+ </script>
+</html>

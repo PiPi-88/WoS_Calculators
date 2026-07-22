@@ -1,0 +1,4 @@
+function remove(in) {
+    result = in.replace(\(\/(\/|*)|*).+\/?\g, "").trim();
+    document.getElementById("out").value = result;
+}
